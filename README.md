@@ -1,18 +1,28 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/shivamp08/pern-hex-finder">
+  <a href="https://shopifyawards.netlify.app/">
     <img src="src/components/images/title.png" alt="Logo">
   </a>
 </p>
 
-Interactive tool to create palettes and get color codes in the Hexadecimal and or RGBA format. Palettes of registered users are saved onto a database, so that they can refer to it multiple times without losing any colors.
+Demo: https://shopifyawards.netlify.app/
+
+Webpage that can search OMDB for movies, and allow the user to save their favourite films they feel should be up for nomination. When they've selected 5 nominees they should be notified they're finished.
 
 Can be used along with HTML/CSS to design websites.
 
 ## Motivation
 
 To showcase my Front-End development skills, via React, for the Shopify Web Developer Intern Challenge - Fall 2021.
+
+## Features
+
+- **Search**: Search the OMDB database and display the results.
+- **Nominate**: Add a movie from the search results to nomination list.
+- **View Nominations**: View the list of films already nominated (5 max).
+- **Remove Nomination**: Remove a nominee from the nomination list.
+- Responsive User Interface.
 
 ## Built With
 
