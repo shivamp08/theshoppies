@@ -9,7 +9,9 @@ require("dotenv").config();
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [movies, setMovies] = useState([]);
-  const [nominations, setNominations] = useState([]);
+  const [nominations, setNominations] = useState(
+    JSON.parse(localStorage.getItem("nominations"))
+  );
   const [loading, setLoading] = useState(false);
 
   const searchMovies = async (searchQuery) => {
@@ -46,14 +48,18 @@ function App() {
   }, [searchQuery]); //eslint-disable-line react-hooks/exhaustive-deps
 
   const addNomination = (i) => {
-    setNominations([
+    const arr = [
       ...nominations,
       movies[movies.findIndex((x) => x.imdbID === i)],
-    ]);
+    ];
+    setNominations(arr);
+    localStorage.setItem("nominations", JSON.stringify(arr));
   };
 
   const removeNomination = (i) => {
-    setNominations(nominations.filter((n) => n.imdbID !== i));
+    const arr = nominations.filter((n) => n.imdbID !== i);
+    setNominations(arr);
+    localStorage.setItem("nominations", JSON.stringify(arr));
   };
 
   return (

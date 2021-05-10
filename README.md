@@ -20,6 +20,7 @@ To showcase my Front-End development skills, via React, for the Shopify Web Deve
 - **Nominate**: Add a movie from the search results to nomination list.
 - **View Nominations**: View the list of films already nominated (5 max).
 - **Remove Nomination**: Remove a nominee from the nomination list.
+- **Save Nominations**: Saves nomination list when user leaves page.
 - Responsive User Interface.
 
 ## Built With
