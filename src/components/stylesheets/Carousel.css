@@ -1,0 +1,125 @@
+.carousel-wrapper {
+  position: relative;
+  height: 230px;
+  margin: 20px 10px 20px 10px;
+  background-color: Gainsboro;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  overflow-x: auto;
+  white-space: nowrap;
+  display: flex;
+  padding: 10px 0px 0px 0px;
+  -moz-box-shadow: inset 0 0 10px #000000;
+  -webkit-box-shadow: inset 0 0 10px #000000;
+  box-shadow: inset 0 0 10px #000000;
+}
+
+.movie-card {
+  margin-right: 20px;
+  width: 500px;
+  height: auto;
+  background-color: white;
+  display: inline-block;
+  min-width: 0;
+  padding: 2px;
+  position: relative;
+  -webkit-animation: fade 0.5s linear forwards;
+  animation: fade 0.5s linear forwards;
+}
+
+.basic-info {
+  min-width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 0px;
+  text-align: left;
+  line-height: 1em;
+}
+
+.basic-info p {
+  font-size: 12px;
+  text-overflow: inherit;
+  overflow: inherit;
+  white-space: pre-line;
+  margin-top: 1px;
+  margin-bottom: 5px;
+}
+
+.movie-title {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-weight: bold;
+  margin: 0px;
+}
+
+.btn-primary:focus,
+.btn-primary:active,
+.btn-dark:focus,
+.btn-dark:active {
+  box-shadow: none !important;
+  outline: 0px !important;
+}
+
+.summary {
+  line-height: 1.5em;
+  font-size: 12px;
+  height: 7.5em;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: inherit;
+  white-space: pre-line;
+  text-align: justify;
+  width: 100%;
+}
+
+.carousel-wrapper img {
+  max-height: 27vh;
+  width: auto;
+  height: auto;
+  margin-right: 5px;
+
+  float: left;
+}
+.card-horizontal {
+  display: flex;
+  flex: 1 1 auto;
+}
+.carousel-wrapper img:last-child {
+  max-height: 27vh;
+  width: auto;
+  height: auto;
+  display: inline-block;
+  margin-right: 0;
+}
+
+@media only screen and (max-width: 650px) {
+  .search-bar {
+    margin: 20px 10px auto 10px;
+  }
+}
+
+@-webkit-keyframes fade {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

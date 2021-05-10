@@ -1,0 +1,17 @@
+.App-header {
+  width: 100%;
+  padding: 10px 10px 10px 10px;
+  font-family: "Orelega One", cursive;
+}
+
+.App-header h1 {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 7vh;
+}
+
+.App-header img {
+  height: 7vh;
+  display: inline-block;
+  vertical-align: middle;
+}
