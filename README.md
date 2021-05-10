@@ -10,8 +10,6 @@ Demo: https://shopifyawards.netlify.app/
 
 Webpage that can search OMDB for movies, and allow the user to save their favourite films they feel should be up for nomination. When they've selected 5 nominees they should be notified they're finished.
 
-Can be used along with HTML/CSS to design websites.
-
 ## Motivation
 
 To showcase my Front-End development skills, via React, for the Shopify Web Developer Intern Challenge - Fall 2021.
@@ -33,7 +31,7 @@ To showcase my Front-End development skills, via React, for the Shopify Web Deve
 
 ```bash
 # get the project
-$ git clone https://github.com/shivamp08/pern-hex-finder
+$ git clone https://github.com/shivamp08/theshoppies
 
 # install dependencies
 $ npm install
