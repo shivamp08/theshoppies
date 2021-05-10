@@ -61,7 +61,8 @@ function App() {
   };
 
   useEffect(() => {
-    setNominations(JSON.parse(localStorage.getItem("nominations")));
+    const arr = JSON.parse(localStorage.getItem("nominations"));
+    arr && setNominations(arr);
   }, []);
 
   return (
