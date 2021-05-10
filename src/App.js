@@ -9,9 +9,7 @@ require("dotenv").config();
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [movies, setMovies] = useState([]);
-  const [nominations, setNominations] = useState(
-    JSON.parse(localStorage.getItem("nominations"))
-  );
+  const [nominations, setNominations] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const searchMovies = async (searchQuery) => {
@@ -61,6 +59,10 @@ function App() {
     setNominations(arr);
     localStorage.setItem("nominations", JSON.stringify(arr));
   };
+
+  useEffect(() => {
+    setNominations(JSON.parse(localStorage.getItem("nominations")));
+  }, []);
 
   return (
     <div className="App">
