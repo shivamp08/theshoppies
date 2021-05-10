@@ -13,7 +13,7 @@ function App() {
   const [loading, setLoading] = useState(false);
 
   const searchMovies = async (searchQuery) => {
-    const url = `http://www.omdbapi.com/?apikey=2561ba20&s=${searchQuery}`;
+    const url = `https://www.omdbapi.com/?apikey=2561ba20&s=${searchQuery}`;
     const res = (await (await fetch(url)).json()).Search;
     if (res) {
       const unique = [
@@ -22,7 +22,7 @@ function App() {
 
       const arr = [];
       for (var i = 0; i < unique.length; i++) {
-        const url2 = `http://www.omdbapi.com/?apikey=2561ba20&i=${unique[i].imdbID}`;
+        const url2 = `https://www.omdbapi.com/?apikey=2561ba20&i=${unique[i].imdbID}`;
         const res2 = await (await fetch(url2)).json();
         arr.push(res2);
       }
