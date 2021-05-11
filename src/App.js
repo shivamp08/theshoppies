@@ -4,21 +4,24 @@ import "./App.css";
 import SearchBar from "./components/SearchBar";
 import Carousel from "./components/Carousel";
 import NominationCarousel from "./components/NominationCarousel";
+import ShareModal from "./components/ShareModal";
 require("dotenv").config();
+var CryptoJS = require("crypto-js");
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [movies, setMovies] = useState([]);
   const [nominations, setNominations] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [modalShow, setModalShow] = useState(false);
 
   const searchMovies = async (searchQuery) => {
     const url = `https://www.omdbapi.com/?apikey=2561ba20&s=${searchQuery}`;
     const res = (await (await fetch(url)).json()).Search;
     if (res) {
-      const unique = [
-        ...new Set(res.map((itm) => JSON.stringify(itm))),
-      ].map((i) => JSON.parse(i));
+      const unique = [...new Set(res.map((itm) => JSON.stringify(itm)))].map(
+        (i) => JSON.parse(i)
+      );
 
       const arr = [];
       for (var i = 0; i < unique.length; i++) {
@@ -63,7 +66,39 @@ function App() {
   useEffect(() => {
     const arr = JSON.parse(localStorage.getItem("nominations"));
     arr && setNominations(arr);
+
+    if (window.location.pathname.length > 1) {
+      decryptUrlPath();
+    }
   }, []);
+
+  const encrypt = () => {
+    var s = "";
+    for (var i = 0; i < nominations.length; i++) {
+      s = s + nominations[i].imdbID;
+    }
+    return CryptoJS.AES.encrypt(s, "secretshouldbein.env").toString();
+  };
+
+  const decryptUrlPath = async () => {
+    var bytes = CryptoJS.AES.decrypt(
+      window.location.pathname.substring(1),
+      "secretshouldbein.env"
+    );
+    const ids = bytes
+      .toString(CryptoJS.enc.Utf8)
+      .split(/(.{9})/)
+      .filter((O) => O);
+    const arr = [];
+    for (var i = 0; i < ids.length; i++) {
+      const url = `https://www.omdbapi.com/?apikey=2561ba20&i=${ids[i]}`;
+      const res = await (await fetch(url)).json();
+      if (res.Response === "True") {
+        arr.push(res);
+      }
+    }
+    setNominations(arr);
+  };
 
   return (
     <div className="App">
@@ -72,8 +107,14 @@ function App() {
         <span className="horizontal-rule"></span>
       </div>
       <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+      <ShareModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+        encryption={encrypt()}
+        copied={false}
+      />
       {nominations.length === 5 ? (
-        <div class="alert alert-success ms-2 mx-2 mt-2" role="alert">
+        <div className="alert alert-success ms-2 mx-2 mt-2" role="alert">
           Congratulations, you selected 5 nominations!
         </div>
       ) : (
@@ -88,7 +129,18 @@ function App() {
         handleClick={addNomination}
         nominationCarousel={false}
       />
-      <h4 style={{ textAlign: "left", marginLeft: "10px" }}>Nominations</h4>
+      <div className="nominations-subheading">
+        <h4 style={{ textAlign: "left", marginLeft: "10px" }}>Nominations</h4>
+        {nominations.length > 0 && (
+          <button
+            type="button"
+            className="btn btn-dark"
+            onClick={() => setModalShow(true)}
+          >
+            Share
+          </button>
+        )}
+      </div>
       <NominationCarousel
         movies={nominations}
         searchQuery={searchQuery}
