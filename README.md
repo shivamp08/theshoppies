@@ -21,6 +21,7 @@ To showcase my Front-End development skills, via React, for the Shopify Web Deve
 - **View Nominations**: View the list of films already nominated (5 max).
 - **Remove Nomination**: Remove a nominee from the nomination list.
 - **Save Nominations**: Saves nomination list when user leaves page.
+- **shareable Links**: Share nominations with other people by using a shareable link.
 - Responsive User Interface.
 
 ## Built With
